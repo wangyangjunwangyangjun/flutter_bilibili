@@ -10,8 +10,7 @@ class HYHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          //防止被手机顶部栏遮挡
+      body: SafeArea( //防止被遮挡
           child: HYHomeContent()),
     );
   }

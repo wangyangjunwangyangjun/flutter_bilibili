@@ -8,12 +8,16 @@ class HYHomeContent extends StatefulWidget {
 }
 
 class _HYHomeContentState extends State<HYHomeContent> {
-  final String userLogo = "https://i1.hdslb.com/bfs/face/50ca9a7c8c8f11a007510c0e0a7eaea1c8167c54.jpg@240w_240h_1c_1s.webp";
+  final String userLogo =
+      "https://i1.hdslb.com/bfs/face/50ca9a7c8c8f11a007510c0e0a7eaea1c8167c54.jpg@240w_240h_1c_1s.webp";
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: tabTitle.length,
+        //DefaultTabController用于tabbar和tabbarView
+        length: tabTitle.length, //设置几个tabBarItem
         child: NestedScrollView(
+            //上划
             headerSliverBuilder: (ctx, innerBoxIsScrolled) {
               return [
                 SliverAppBar(
@@ -32,6 +36,7 @@ class _HYHomeContentState extends State<HYHomeContent> {
   }
 }
 
+//圆形图标
 Widget buildHomeUserIcon(String userLogo) {
   return Container(
     alignment: Alignment.centerRight,
@@ -41,6 +46,7 @@ Widget buildHomeUserIcon(String userLogo) {
   );
 }
 
+//搜索
 Widget buildHomeSearch() {
   return Row(
     children: [
@@ -51,7 +57,7 @@ Widget buildHomeSearch() {
               padding: EdgeInsets.only(left: 18.px, top: 10.px, bottom: 10.px),
               child: Image.asset("assets/image/icon/search_custom.png")),
           height: 35.px,
-          decoration: BoxDecoration(
+          decoration: BoxDecoration(  //圆角
               color: Color.fromRGBO(242, 243, 245, 1),
               borderRadius: BorderRadius.circular(180.px)),
         ),
@@ -79,6 +85,7 @@ List<Widget> buildHomeActions() {
   ];
 }
 
+//直播、推荐那个几个item的tabbar
 TabBar buildHomeTabBar() {
   return TabBar(
     tabs: tabTitle.map((e) => Tab(text: e)).toList(),
@@ -90,11 +97,11 @@ TabBar buildHomeTabBar() {
     unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal),
     indicatorWeight: 4.px,
     labelPadding: EdgeInsets.zero,
-    padding: EdgeInsets.zero,
-    indicatorPadding: EdgeInsets.symmetric(vertical: 10),
+    indicatorPadding: EdgeInsets.only(bottom: 10.px),
   );
 }
 
+//home中主要显示的内容，与tabBar对应
 Widget buildHomeTabBarView() {
   return TabBarView(
     children: tabTitle.map((e) {
