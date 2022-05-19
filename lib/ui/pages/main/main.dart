@@ -19,11 +19,11 @@ class _HYMainScreenState extends State<HYMainScreen> {
         children: pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedFontSize: 10.px,
-        unselectedFontSize: 10.px,
-        selectedItemColor: Color.fromRGBO(210, 83, 125, 1),
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
+        selectedFontSize: 10.px,  //选中时字体大小
+        unselectedFontSize: 10.px, //未选中时字体大小
+        selectedItemColor: Color.fromRGBO(210, 83, 125, 1), //选中时字体颜色
+        type: BottomNavigationBarType.fixed,  //显示label标签，而不是隐藏label
+        currentIndex: _currentIndex, //当前显示的页面
         items: items,
         onTap: (index) {
           setState(() {
