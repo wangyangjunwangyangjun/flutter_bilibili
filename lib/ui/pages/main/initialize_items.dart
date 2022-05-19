@@ -5,8 +5,8 @@ import '../dynamic_circle/dynamic_circle.dart';
 import '../mine/mine.dart';
 import '../vip_shop/vip_shop.dart';
 
-final _iconSize = 20.px;
-final _activeIcon = 23.px;
+final _iconSize = 18.px;
+final _activeIcon = 18.px;
 
 final List<Widget> pages = [
   HYHomeScreen(),
@@ -15,24 +15,27 @@ final List<Widget> pages = [
   HYMineScreen()
 ];
 final List<BottomNavigationBarItem> items = [
-  BottomNavigationBarItem(
-    label: "首页",
-    icon: Image.asset("assets/image/icon/home_custom.png", width: _iconSize, height: _iconSize),
-    activeIcon: Image.asset("assets/image/icon/home_selected.png", width: _activeIcon, height: _activeIcon),
-  ),
-  BottomNavigationBarItem(
-    label: "动态",
-    icon: Image.asset("assets/image/icon/dynamic_custom.png", width: _iconSize, height: _iconSize),
-    activeIcon: Image.asset("assets/image/icon/dynamic_selected.png", width: _activeIcon, height: _activeIcon),
-  ),
-  BottomNavigationBarItem(
-    label: "会员购",
-    icon: Image.asset("assets/image/icon/vip_custom.png", width: _iconSize, height: _iconSize),
-    activeIcon: Image.asset("assets/image/icon/vip_selected.png", width: _activeIcon, height: _activeIcon),
-  ),
-  BottomNavigationBarItem(
-    label: "我的",
-    icon: Image.asset("assets/image/icon/mine_custom.png", width: _iconSize, height: _iconSize),
-    activeIcon: Image.asset("assets/image/icon/mine_selected.png", width: _activeIcon, height: _activeIcon),
-  ),
+  buildBottomNavigationBarItem("首页", "home"),
+  buildBottomNavigationBarItem("动态", "dynamic"),
+  buildBottomNavigationBarItem("会员购", "vip"),
+  buildBottomNavigationBarItem("我的", "mine"),
 ];
+
+BottomNavigationBarItem buildBottomNavigationBarItem(
+    String title, String iconName) {
+  return BottomNavigationBarItem(
+    label: title,
+    icon: Image.asset(
+      "assets/image/icon/${iconName}_custom.png",
+      width: _iconSize,
+      height: _iconSize,
+      gaplessPlayback: true, //gaplessPlayback: 原图片保持不变，直到图片加载完成时替换图片，这样就不会出现闪烁
+    ),
+    activeIcon: Image.asset(
+      "assets/image/icon/${iconName}_selected.png",
+      width: _activeIcon,
+      height: _activeIcon,
+      gaplessPlayback: true,
+    ),
+  );
+}

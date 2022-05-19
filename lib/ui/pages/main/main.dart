@@ -19,7 +19,7 @@ class _HYMainScreenState extends State<HYMainScreen> {
         children: pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedFontSize: 11.px,
+        selectedFontSize: 10.px,
         unselectedFontSize: 10.px,
         selectedItemColor: Color.fromRGBO(210, 83, 125, 1),
         type: BottomNavigationBarType.fixed,
