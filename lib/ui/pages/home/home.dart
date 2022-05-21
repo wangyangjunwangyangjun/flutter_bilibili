@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bilibili/core/extension/int_extension.dart';
-
 import 'home_content.dart';
-import 'initialize_item.dart';
 
 class HYHomeScreen extends StatelessWidget {
   static const String routeName = "/home";

@@ -4,6 +4,8 @@ import 'create_material_color.dart';
 
 class HYAppTheme {
   //共有属性
+  static const double xxxSmallFontSize = 10;
+  static const double xxSmallFontSize = 12;
   static const double xSmallFontSize = 14;
   static const double smallFontSize = 16;
   static const double normalFontSize = 22;
