@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bilibili/core/extension/int_extension.dart';
 import 'package:flutter_bilibili/core/model/video_model.dart';
+import 'package:flutter_bilibili/ui/pages/video_play/video_play.dart';
 import 'package:flutter_bilibili/ui/shared/app_theme.dart';
 import 'package:flutter_bilibili/ui/shared/number_compute.dart';
 
@@ -19,31 +20,36 @@ class HYHomeVideoItem extends StatefulWidget {
 class _HYHomeVideoItemState extends State<HYHomeVideoItem> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(_radius),
-              topRight: Radius.circular(_radius),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(HYVideoPlayScreen.routeName, arguments: widget._video);
+      },
+      child: Stack(
+        children: [
+          Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(_radius),
+                topRight: Radius.circular(_radius),
+              ),
+            ),
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    buildHomeVideoItemCover(widget._video),
+                    buildHomeVideoItemInfo(widget._video, context),
+                    buildHomeVideoItemDuration(widget._video.durationText)
+                  ],
+                ),
+                buildHomeVideoItemTitle(context, widget._video.title),
+              ],
             ),
           ),
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  buildHomeVideoItemCover(widget._video),
-                  buildHomeVideoItemInfo(widget._video, context),
-                  buildHomeVideoItemDuration(widget._video.durationText)
-                ],
-              ),
-              buildHomeVideoItemTitle(context, widget._video.title),
-            ],
-          ),
-        ),
-        buildHomeVideoBottomInfo(context, widget._video.owner.name),
-        buildHomeVideoMoreIcon()
-      ],
+          buildHomeVideoBottomInfo(context, widget._video.owner.name),
+          buildHomeVideoMoreIcon()
+        ],
+      ),
     );
   }
 }

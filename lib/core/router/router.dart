@@ -4,6 +4,7 @@ import 'package:flutter_bilibili/ui/pages/dynamic_circle/dynamic_circle.dart';
 import 'package:flutter_bilibili/ui/pages/home/home.dart';
 import 'package:flutter_bilibili/ui/pages/main/main.dart';
 import 'package:flutter_bilibili/ui/pages/mine/mine.dart';
+import 'package:flutter_bilibili/ui/pages/video_play/video_play.dart';
 import 'package:flutter_bilibili/ui/pages/vip_shop/vip_shop.dart';
 
 class HYRouter {
@@ -13,7 +14,8 @@ class HYRouter {
     HYHomeScreen.routeName: (ctx) => HYHomeScreen(),
     HYDynamicCircleScreen.routeName: (ctx) => HYDynamicCircleScreen(),
     HYMineScreen.routeName: (ctx) => HYMineScreen(),
-    HYVipShopScreen.routeName: (ctx) => HYVipShopScreen()
+    HYVipShopScreen.routeName: (ctx) => HYVipShopScreen(),
+    HYVideoPlayScreen.routeName: (ctx) => HYVideoPlayScreen(),
   };
 
   //后改

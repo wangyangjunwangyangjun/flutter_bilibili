@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bilibili/core/extension/int_extension.dart';
 import 'package:flutter_bilibili/ui/pages/home/home_recommend.dart';
-import 'initialize_item.dart';
+import 'home_initialize_item.dart';
 
 class HYHomeContent extends StatefulWidget {
   @override

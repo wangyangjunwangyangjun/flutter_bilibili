@@ -3,12 +3,42 @@
 //     final hyVideoModel = hyVideoModelFromJson(jsonString);
 
 import 'dart:convert';
+import 'dart:math';
+
+import 'package:flutter_bilibili/ui/pages/video_play/video_play_initialize_item.dart';
 
 HYVideoModel hyVideoModelFromJson(String str) => HYVideoModel.fromJson(json.decode(str));
 
 String hyVideoModelToJson(HYVideoModel data) => json.encode(data.toJson());
 
-//秒制时间转成标准格式如：3601秒转成01:00:01
+/**
+ * type=1：长视频；type=0：宽视频
+ */
+//视频数据
+class VideoData {
+  String videoURL;  //视频url
+  int videoHeightType;//视频类型
+
+  VideoData(this.videoURL, this.videoHeightType);
+
+}
+List<VideoData> videoList = [
+  VideoData('test-video-10.MP4', 0),
+  VideoData('test-video-6.mp4', 1),
+  VideoData('test-video-9.MP4', 0),
+  VideoData('test-video-8.MP4', 1),
+  VideoData('test-video-7.MP4', 0),
+  VideoData('test-video-1.mp4', 0),
+  VideoData('test-video-2.mp4', 1),
+  VideoData('test-video-3.mp4', 1),
+  VideoData('test-video-4.mp4', 1),
+];
+
+VideoData randomGetVideo() {
+  int randomNum = Random().nextInt(videoList.length);
+  return videoList[randomNum];
+  // return "https://static.ybhospital.net/"+videoList[randomNum].url;
+}
 
 class HYVideoModel {
   HYVideoModel({
@@ -24,7 +54,7 @@ class HYVideoModel {
     required this.desc,
     required this.state,
     required this.duration,  //时间
-    required this.durationText,  //时间
+    required this.durationText,  //时间文本格式
     required this.rights,
     required this.owner,
     required this.stat,
@@ -34,13 +64,14 @@ class HYVideoModel {
     required this.seasonId,
     required this.shortLink,
     required this.shortLinkV2,
+    videoData,
     required this.firstFrame,
     required this.bvid,
     required this.seasonType,
     required this.isOgv,
     required this.ogvInfo,
     required this.rcmdReason,
-  });
+  }) : videoData = randomGetVideo();
 
   int aid;
   int videos;
@@ -64,6 +95,7 @@ class HYVideoModel {
   int? seasonId;
   String shortLink;
   String shortLinkV2;
+  VideoData videoData;
   String? firstFrame;
   String bvid;
   int seasonType;
