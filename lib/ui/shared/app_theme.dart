@@ -13,7 +13,7 @@ class HYAppTheme {
   static const double xLargeFontSize = 26;
 
   //普通模式
-  static const Color norTextColors = Colors.red;
+  static const Color norTextColors = Color.fromRGBO(253, 105, 155, 1);
   static final ThemeData norTheme = ThemeData(
     primarySwatch: createMaterialColor(Colors.white), //包含大部分颜色设置
     canvasColor: Color.fromRGBO(241, 242, 244, 1), //APP背景颜色

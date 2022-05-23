@@ -8,7 +8,7 @@ class HYHomeRequest {
      * pn为页数
      * ps为一页几项video数据
      */
-    final url = "?rid=$rid&pn=$pn&ps=$ps";
+    final url = "/web-interface/dynamic/region?rid=$rid&pn=$pn&ps=$ps";
     print(url);
     final result = await HttpRequest.request(url);
     final videoArray = result["data"]["archives"];

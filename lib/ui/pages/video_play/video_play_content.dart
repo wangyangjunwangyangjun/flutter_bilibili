@@ -39,7 +39,7 @@ class _HYVideoPlayContentState extends State<HYVideoPlayContent> {
         headerSliverBuilder: (ctx, innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              backgroundColor: Color.fromRGBO(253, 105, 155, 1),
+              backgroundColor: HYAppTheme.norTextColors,
               pinned: true,
               toolbarHeight: 70.px,
               expandedHeight:
@@ -79,7 +79,7 @@ class _HYVideoPlayContentState extends State<HYVideoPlayContent> {
     return TabBarView(
       children: tabTitle.map((e) {
         if (e == "简介") {
-          return HYVideoPlayProfile();
+          return HYVideoPlayProfile(widget.video);
         } else {
           return HYVideoPlayComments();
         }
@@ -95,9 +95,9 @@ class _HYVideoPlayContentState extends State<HYVideoPlayContent> {
           color: Colors.white,
           child: TabBar(
             tabs: tabTitle.map((e) => Tab(text: e)).toList(),
-            indicatorColor: Color.fromRGBO(253, 105, 155, 1),
+            indicatorColor: HYAppTheme.norTextColors,
             unselectedLabelColor: Color.fromRGBO(95, 95, 95, 1),
-            labelColor: Color.fromRGBO(253, 105, 155, 1),
+            labelColor: HYAppTheme.norTextColors,
             indicatorSize: TabBarIndicatorSize.label,
             labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: HYAppTheme.xxSmallFontSize),
             unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal, fontSize: HYAppTheme.xxSmallFontSize),

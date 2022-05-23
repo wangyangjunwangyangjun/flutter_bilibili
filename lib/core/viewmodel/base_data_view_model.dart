@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//加载视频拿多少数量
 class HYBaseDataViewModel extends ChangeNotifier {
   int _rid = 1;  //分区
   int _pn = 1;  //页数

@@ -5,10 +5,13 @@ import 'package:flutter_bilibili/ui/pages/video_play/video_play_content.dart';
 class HYVideoPlayScreen extends StatelessWidget {
   static const String routeName = "/video_play";
 
+  HYVideoModel video;
+  HYVideoPlayScreen(this.video);
+
   @override
   Widget build(BuildContext context) {
-    HYVideoModel video =
-        ModalRoute.of(context)?.settings.arguments as HYVideoModel;
+    // HYVideoModel video =
+    //     ModalRoute.of(context)?.settings.arguments as HYVideoModel;
     return SafeArea(
       child: Scaffold(
         body: HYVideoPlayContent(video),

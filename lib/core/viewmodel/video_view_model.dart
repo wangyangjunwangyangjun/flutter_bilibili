@@ -30,5 +30,4 @@ class HYVideoViewModel extends ChangeNotifier {
   }
 
   HYBaseDataViewModel get baseDataVM => _baseDataVM;
-
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bilibili/core/extension/int_extension.dart';
 import 'package:flutter_bilibili/ui/pages/home/home_recommend.dart';
+import 'package:flutter_bilibili/ui/shared/app_theme.dart';
 import 'home_initialize_item.dart';
 
 class HYHomeContent extends StatefulWidget {
@@ -98,9 +99,9 @@ List<Widget> buildHomeActions() {
 TabBar buildHomeTabBar() {
   return TabBar(
     tabs: tabTitle.map((e) => Tab(text: e)).toList(),
-    indicatorColor: Color.fromRGBO(253, 105, 155, 1),
+    indicatorColor: HYAppTheme.norTextColors,
     unselectedLabelColor: Color.fromRGBO(95, 95, 95, 1),
-    labelColor: Color.fromRGBO(253, 105, 155, 1),
+    labelColor: HYAppTheme.norTextColors,
     indicatorSize: TabBarIndicatorSize.label,
     labelStyle: TextStyle(fontWeight: FontWeight.bold),
     unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal),

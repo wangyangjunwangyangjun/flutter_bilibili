@@ -1,17 +1,24 @@
 // To parse this JSON data, do
 //
-//     final hyVideoModel = hyVideoModelFromJson(jsonString);
+//     final hyArchiveRelatedModel = hyArchiveRelatedModelFromJson(jsonString);
+
+/**
+ * 废除，暂时用不上，先留着
+ */
+
+/*
 
 import 'dart:convert';
+
 import 'dart:math';
 
 import 'package:flutter_bilibili/core/model/video_data.dart';
 
 import '../../ui/shared/math_compute.dart';
 
-HYVideoModel hyVideoModelFromJson(String str) => HYVideoModel.fromJson(json.decode(str));
+List<HYArchiveRelatedModel> hyArchiveRelatedModelFromJson(String str) => List<HYArchiveRelatedModel>.from(json.decode(str).map((x) => HYArchiveRelatedModel.fromJson(x)));
 
-String hyVideoModelToJson(HYVideoModel data) => json.encode(data.toJson());
+String hyArchiveRelatedModelToJson(List<HYArchiveRelatedModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 
 VideoData randomGetVideo() {
@@ -19,8 +26,9 @@ VideoData randomGetVideo() {
   return videoList[randomNum];
 }
 
-class HYVideoModel {
-  HYVideoModel({
+class HYArchiveRelatedModel {
+
+  HYArchiveRelatedModel({
     required this.aid,
     required this.videos,
     required this.tid,
@@ -32,18 +40,18 @@ class HYVideoModel {
     required this.ctime,
     required this.desc,
     required this.state,
-    required this.duration,  //时间
+    required this.duration,
     required this.durationText,  //时间文本格式
     required this.rights,
     required this.owner,
     required this.stat,
-    required this.hyVideoModelDynamic,
+    required this.hyArchiveRelatedModelDynamic,
     required this.cid,
     required this.dimension,
-    required this.seasonId,
     required this.shortLink,
     required this.shortLinkV2,
     videoData,
+    required this.upFromV2,
     required this.firstFrame,
     required this.bvid,
     required this.seasonType,
@@ -68,21 +76,21 @@ class HYVideoModel {
   Map<String, int> rights;
   Owner owner;
   Map<String, int> stat;
-  String hyVideoModelDynamic;
+  String hyArchiveRelatedModelDynamic;
   int cid;
   Dimension dimension;
-  int? seasonId;
   String shortLink;
   String shortLinkV2;
   VideoData videoData;
-  String? firstFrame;
+  dynamic upFromV2;
+  dynamic firstFrame;
   String bvid;
   int seasonType;
   bool isOgv;
   dynamic ogvInfo;
   String rcmdReason;
 
-  factory HYVideoModel.fromJson(Map<String, dynamic> json) => HYVideoModel(
+  factory HYArchiveRelatedModel.fromJson(Map<String, dynamic> json) => HYArchiveRelatedModel(
     aid: json["aid"],
     videos: json["videos"],
     tid: json["tid"],
@@ -99,12 +107,12 @@ class HYVideoModel {
     rights: Map.from(json["rights"]).map((k, v) => MapEntry<String, int>(k, v)),
     owner: Owner.fromJson(json["owner"]),
     stat: Map.from(json["stat"]).map((k, v) => MapEntry<String, int>(k, v)),
-    hyVideoModelDynamic: json["dynamic"],
+    hyArchiveRelatedModelDynamic: json["dynamic"],
     cid: json["cid"],
     dimension: Dimension.fromJson(json["dimension"]),
-    seasonId: json["season_id"],
     shortLink: json["short_link"],
     shortLinkV2: json["short_link_v2"],
+    upFromV2: json["up_from_v2"],
     firstFrame: json["first_frame"],
     bvid: json["bvid"],
     seasonType: json["season_type"],
@@ -130,12 +138,12 @@ class HYVideoModel {
     "rights": Map.from(rights).map((k, v) => MapEntry<String, dynamic>(k, v)),
     "owner": owner.toJson(),
     "stat": Map.from(stat).map((k, v) => MapEntry<String, dynamic>(k, v)),
-    "dynamic": hyVideoModelDynamic,
+    "dynamic": hyArchiveRelatedModelDynamic,
     "cid": cid,
     "dimension": dimension.toJson(),
-    "season_id": seasonId,
     "short_link": shortLink,
     "short_link_v2": shortLinkV2,
+    "up_from_v2": upFromV2,
     "first_frame": firstFrame,
     "bvid": bvid,
     "season_type": seasonType,
@@ -144,6 +152,7 @@ class HYVideoModel {
     "rcmd_reason": rcmdReason,
   };
 }
+
 
 class Dimension {
   Dimension({
@@ -192,3 +201,5 @@ class Owner {
     "face": face,
   };
 }
+
+ */

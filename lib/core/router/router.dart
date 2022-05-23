@@ -7,6 +7,8 @@ import 'package:flutter_bilibili/ui/pages/mine/mine.dart';
 import 'package:flutter_bilibili/ui/pages/video_play/video_play.dart';
 import 'package:flutter_bilibili/ui/pages/vip_shop/vip_shop.dart';
 
+import '../model/video_model.dart';
+
 class HYRouter {
   static const String initialRoute = HYMainScreen.routeName; //初始化路由
   static Map<String, WidgetBuilder> routes = {
@@ -15,12 +17,17 @@ class HYRouter {
     HYDynamicCircleScreen.routeName: (ctx) => HYDynamicCircleScreen(),
     HYMineScreen.routeName: (ctx) => HYMineScreen(),
     HYVipShopScreen.routeName: (ctx) => HYVipShopScreen(),
-    HYVideoPlayScreen.routeName: (ctx) => HYVideoPlayScreen(),
+    // HYVideoPlayScreen.routeName: (ctx) => HYVideoPlayScreen(),
   };
 
   //后改
   static final RouteFactory generateRoute = (setting) {
-    return null;
+    String? routeName = setting.name;
+    switch(routeName) {
+      case "/video_play": return MaterialPageRoute(builder: (context) {
+        return HYVideoPlayScreen(setting.arguments as HYVideoModel);
+      });
+    };
   };
   //找不到页面
   static final RouteFactory unKnowRoute = (setting) {

@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bilibili/core/extension/int_extension.dart';
-import 'package:flutter_bilibili/core/model/video_model.dart';
 import 'package:flutter_bilibili/ui/pages/video_play/video_play.dart';
 import 'package:flutter_bilibili/ui/shared/app_theme.dart';
 
+import '../../../core/model/archive_related_model.dart';
+import '../../../core/model/video_model.dart';
 import '../../shared/math_compute.dart';
 
 final _radius = 6.px;
 final _iconSize = 14.px;
 
-class HYHomeVideoItem extends StatefulWidget {
+class HYVideoPlayRelatedVideoItem extends StatefulWidget {
   HYVideoModel _video;
 
-  HYHomeVideoItem(this._video);
+  HYVideoPlayRelatedVideoItem(this._video);
 
   @override
-  State<HYHomeVideoItem> createState() => _HYHomeVideoItemState();
+  State<HYVideoPlayRelatedVideoItem> createState() => _HYVideoPlayRelatedVideoItemState();
 }
 
-class _HYHomeVideoItemState extends State<HYHomeVideoItem> {
+class _HYVideoPlayRelatedVideoItemState extends State<HYVideoPlayRelatedVideoItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -38,17 +39,17 @@ class _HYHomeVideoItemState extends State<HYHomeVideoItem> {
               children: [
                 Stack(
                   children: [
-                    buildHomeVideoItemCover(widget._video),
-                    buildHomeVideoItemInfo(widget._video, context),
-                    buildHomeVideoItemDuration(widget._video.durationText)
+                    buildVideoPlayRelatedVideoItemCover(widget._video),
+                    buildVideoPlayRelatedVideoItemInfo(widget._video, context),
+                    buildVideoPlayRelatedVideoItemDuration(widget._video.durationText)
                   ],
                 ),
-                buildHomeVideoItemTitle(context, widget._video.title),
+                buildVideoPlayRelatedVideoItemTitle(context, widget._video.title),
               ],
             ),
           ),
-          buildHomeVideoBottomInfo(context, widget._video.owner.name),
-          buildHomeVideoMoreIcon()
+          buildVideoPlayRelatedVideoBottomInfo(context, widget._video.owner.name),
+          buildVideoPlayRelatedVideoMoreIcon()
         ],
       ),
     );
@@ -56,10 +57,8 @@ class _HYHomeVideoItemState extends State<HYHomeVideoItem> {
 }
 
 //更多按钮
-class buildHomeVideoMoreIcon extends StatelessWidget {
-  const buildHomeVideoMoreIcon({
-    Key? key,
-  }) : super(key: key);
+class buildVideoPlayRelatedVideoMoreIcon extends StatelessWidget {
+
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +75,7 @@ class buildHomeVideoMoreIcon extends StatelessWidget {
 }
 
 //视频封面
-Widget buildHomeVideoItemCover(HYVideoModel video) {
+Widget buildVideoPlayRelatedVideoItemCover(HYVideoModel video) {
   return ClipRRect(
     borderRadius: BorderRadius.only(
       topLeft: Radius.circular(_radius),
@@ -92,7 +91,7 @@ Widget buildHomeVideoItemCover(HYVideoModel video) {
 }
 
 //视频时长
-Widget buildHomeVideoItemDuration(String duration) {
+Widget buildVideoPlayRelatedVideoItemDuration(String duration) {
   return Positioned(
     right: 5.px,
     bottom: 3.px,
@@ -104,7 +103,7 @@ Widget buildHomeVideoItemDuration(String duration) {
 }
 
 //视频播放量、评论数
-Widget buildHomeVideoItemInfo(HYVideoModel video, BuildContext context) {
+Widget buildVideoPlayRelatedVideoItemInfo(HYVideoModel video, BuildContext context) {
   int? _view = video.stat["view"];
   int? _remark = video.stat["danmaku"];
 
@@ -113,12 +112,12 @@ Widget buildHomeVideoItemInfo(HYVideoModel video, BuildContext context) {
     bottom: 3.px,
     child: Row(
       children: [
-        buildHomeVideoIconInfoItem(
+        buildVideoPlayRelatedVideoIconInfoItem(
             "assets/image/icon/play_custom.png", _view!, context),
         SizedBox(
           width: 10.px,
         ),
-        buildHomeVideoIconInfoItem(
+        buildVideoPlayRelatedVideoIconInfoItem(
             "assets/image/icon/remark.png", _remark!, context),
       ],
     ),
@@ -126,7 +125,7 @@ Widget buildHomeVideoItemInfo(HYVideoModel video, BuildContext context) {
 }
 
 //视频的标题
-Widget buildHomeVideoItemTitle(BuildContext context, String videoTitle) {
+Widget buildVideoPlayRelatedVideoItemTitle(BuildContext context, String videoTitle) {
   return Container(
     alignment: Alignment.topLeft,
     margin: EdgeInsets.symmetric(vertical: 8.px, horizontal: 8.px),
@@ -140,7 +139,7 @@ Widget buildHomeVideoItemTitle(BuildContext context, String videoTitle) {
 }
 
 //视频up主及id名称
-Widget buildHomeVideoBottomInfo(BuildContext context, String info) {
+Widget buildVideoPlayRelatedVideoBottomInfo(BuildContext context, String info) {
   return Positioned(
     bottom: 8.px,
     left: 8.px,
@@ -168,7 +167,7 @@ Widget buildHomeVideoBottomInfo(BuildContext context, String info) {
 }
 
 //视频播放量和评论如果过万，就要显示多少万
-Widget buildHomeVideoIconInfoItem(String icon, int num, BuildContext context) {
+Widget buildVideoPlayRelatedVideoIconInfoItem(String icon, int num, BuildContext context) {
   double _numDiv = num.toDouble();
   int _flag = 0;
   if (num > 10000) {
